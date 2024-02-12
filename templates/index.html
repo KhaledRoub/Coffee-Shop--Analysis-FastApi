@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <title>Store Data Query</title>
+</head>
+
+<body>
+
+    <div class="form-container">
+        <h2>Store Data Query</h2>
+        <form action="http://127.0.0.1:8000/submit_data/" method="POST" onsubmit="return validateForm()">
+            <label for="store_id">Store ID:</label>
+            <input type="text" id="store_id" name="store_id" pattern="\d+" required
+                placeholder="Enter store ID (numbers only)">
+
+            <label for="start_date">Start Date:</label>
+            <input type="text" id="start_date" name="start_date" pattern="\d{4}-\d{2}-\d{2}" required
+                placeholder="Enter start date (e.g., YYYY-MM-DD)">
+
+            <label for="end_date">End Date:</label>
+            <input type="text" id="end_date" name="end_date" pattern="\d{4}-\d{2}-\d{2}" required
+                placeholder="Enter end date (e.g., YYYY-MM-DD)">
+            <label for="start_hour">Start Hour:</label>
+            <input type="number" id="start_hour" name="start_hour" required placeholder="Enter start hour (1-24)"
+                min="1" max="24">
+
+            <label for="end_hour">End Hour:</label>
+            <input type="number" id="end_hour" name="end_hour" required placeholder="Enter end hour (1-24)" min="1"
+                max="24">
+
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            var storeIdInput = document.getElementById('store_id');
+            var startDateInput = document.getElementById('start_date');
+            var endDateInput = document.getElementById('end_date');
+
+
+            return storeIdInput.checkValidity() && startDateInput.checkValidity() && endDateInput.checkValidity();
+        }
+    </script>
+
+</body>
+
+</html>

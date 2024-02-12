@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sales Data</title>
+</head>
+
+<body>
+    <h1>Sales Data</h1>
+    <ul>
+        {% for item in data %}
+        <li>
+            {% for key, value in item.items() %}
+            <p>{{ key }}: {{ value }}</p>
+            {% endfor %}
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>
